@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* { 
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; 
+    overflow: hidden;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#note-title { 
+    width: 400px; 
+    padding: 10px; 
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+}
+
+#note-content { 
+    width: 400px; 
+    height: 300px; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    resize: none; 
+}
+
+#add-note {
+    background-color: #6E85B7;
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#add-note:hover {
+    background-color: #4b6497; 
+}
+
+#note-list {
+    padding: 0; 
+    list-style: none;
+}
+
+.note {
+    background-color: #c9d5e8; 
+    padding: 10px; 
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+}
+
+.note-title { 
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#note-title, 
+#note-content {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
+}
+
+#note-title,
+#note-content,
+.note {
+  border-radius: 5px;  
+}
+
+
+
+
+
