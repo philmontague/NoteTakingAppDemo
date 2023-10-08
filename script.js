@@ -2,7 +2,6 @@ const noteTitleInput = document.querySelector('#note-title')
 const noteContentInput = document.querySelector('#note-content')
 const addNoteBtn = document.querySelector('#add-note')
 const noteList = document.querySelector('#note-list')
-const deleteBtn = document.createElement('button')
 
 
 // ADD NOTE EVENT LISTENER 
@@ -41,6 +40,7 @@ addNoteBtn.addEventListener('click', function() {
 
 
     // Delete button element for the note
+    const deleteBtn = document.createElement('button')
     deleteBtn.textContent = 'Delete'
     deleteBtn.classList.add('delete-btn')
     
