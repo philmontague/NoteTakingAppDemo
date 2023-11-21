@@ -4,56 +4,63 @@ const addNoteBtn = document.querySelector('#add-note')
 const noteList = document.querySelector('#note-list')
 
 
-// ADD NOTE EVENT LISTENER 
-addNoteBtn.addEventListener('click', function() { 
-    const noteTitle = noteTitleInput.value 
-    const noteContent = noteContentInput.value 
+// Function to create a note item 
+function createNoteItem(title, content) { 
+    const listItem = document.createElement('li'); 
+    listItem.classList.add('note'); 
 
-    // Check if both title and content are provided
-    if (noteTitle.trim() === '' || noteContent.trim() === '') {
-        alert('Please enter both a title and content for the note')
-        return 
+    const noteTitleElement = document.createElement('div'); 
+    noteTitleElement.classList.add('note-title'); 
+    noteTitleElement.textContent = title; 
+
+    const noteContentElement = document.createElement('div'); 
+    noteContentElement.textContent = content; 
+
+    listItem.appendChild(noteTitleElement); 
+    listItem.appendChild(noteContentElement); 
+
+
+    // Edit button 
+    const editBtn = document.createElement('button'); 
+    editBtn.textContent = 'Edit'; 
+    editBtn.classList.add('edit-button'); 
+    editBtn.addEventListener('click', function () { 
+        editNoteItem(listItem); 
+    }); 
+    listItem.appendChild(editBtn); 
+
+
+    // Delete button 
+    const deleteBtn = document.createElement('button'); 
+    deleteBtn.textContent = 'Delete'; 
+    deleteBtn.classList.add('delete-btn'); 
+    deleteBtn.addEventListener('click', function () { 
+        deleteNoteItem(listItem); 
+    }); 
+    listItem.appendChild(deleteBtn); 
+
+    return listItem; 
+}
+
+// Function to edit a note item 
+
+
+
+// Event Listener 
+addNoteBtn.addEventListener('click', function () { 
+    const noteTitle = noteTitleInput.value; 
+    const noteContent = noteContentInput.value; 
+
+
+    if (noteTitle.trim() === '' || noteContent.trim() === '') { 
+        alert('Please enter both a title and content for the note'); 
+        return; 
     }
 
-    // New list item element for the note
-    const listItem = document.createElement('li')
-    listItem.classList.add('note')
+    const listItem = createNoteItem(noteTitle, noteContent); 
+    noteList.appendChild(listItem); 
 
-    // Create elements for the note title and content
-    const noteTitleElement = document.createElement('div')
-    noteTitleElement.classList.add('note-title')
-    noteTitleElement.textContent = noteTitle
+    noteTitleInput.value = ''; 
+    noteContentInput.value = ''; 
 
-    const noteContentElement = document.createElement('div')
-    noteContentElement.textContent = noteContent
-
-    // Append the title and content to the list item
-    listItem.appendChild(noteTitleElement)
-    listItem.appendChild(noteContentElement)
-
-    // Append the list item to the note list
-    noteList.appendChild(listItem)
-
-    // Clear input fields 
-    noteTitleInput.value = ''
-    noteContentInput.value = ''
-
-
-    // Delete button element for the note
-    const deleteBtn = document.createElement('button')
-    deleteBtn.textContent = 'Delete'
-    deleteBtn.classList.add('delete-btn')
-    
-    // Event Listener for delete btn 
-    deleteBtn.addEventListener('click', deleteNote)
-    
-    // Append delete button to list
-    listItem.appendChild(deleteBtn)
-    
-})
-
-// DELETE NOTE FUNCTION 
-function deleteNote() {
-    const listItem = this.parentElement 
-    noteList.removeChild(listItem)
-}
+}); 
