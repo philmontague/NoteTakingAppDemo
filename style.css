@@ -93,4 +93,13 @@ h1 {
     padding: 5px 2px; 
 }
 
+.edit-btn { 
+    background-color: #6E85B7;
+    color: #fff; 
+    border: none; 
+    margin: 5px; 
+    border-radius: 5px;
+    padding: 5px 2px; 
+}
+
 

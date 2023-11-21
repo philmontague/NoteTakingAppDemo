@@ -23,7 +23,7 @@ function createNoteItem(title, content) {
     // Edit button 
     const editBtn = document.createElement('button'); 
     editBtn.textContent = 'Edit'; 
-    editBtn.classList.add('edit-button'); 
+    editBtn.classList.add('edit-btn'); 
     editBtn.addEventListener('click', function () { 
         editNoteItem(listItem); 
     }); 
@@ -44,6 +44,19 @@ function createNoteItem(title, content) {
 
 // Function to edit a note item 
 
+
+
+
+
+// Function to save edited note item 
+
+
+
+
+// Function to delete a note item 
+function deleteNoteItem(listItem) { 
+    noteList.removeChild(listItem); 
+}
 
 
 // Event Listener 
