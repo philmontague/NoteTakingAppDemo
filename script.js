@@ -14,6 +14,7 @@ function createNoteItem(title, content) {
     noteTitleElement.textContent = title; 
 
     const noteContentElement = document.createElement('div'); 
+    noteContentElement.classList.add('note-content'); 
     noteContentElement.textContent = content; 
 
     listItem.appendChild(noteTitleElement); 
@@ -45,7 +46,7 @@ function createNoteItem(title, content) {
 // Function to edit a note item 
 function editNoteItem(listItem) { 
     const noteTitleElement = listItem.querySelector('.note-title'); 
-    const noteContentElement = listItem.querySelector('div:not(.note-content)'); 
+    const noteContentElement = listItem.querySelector('.note-content'); 
 
     const editTitleInput = document.createElement('input'); 
     editTitleInput.type = 'text'; 
@@ -74,24 +75,10 @@ function editNoteItem(listItem) {
 // Function to save edited note item 
 function saveEditedItem(listItem, editedTitle, editedContent) { 
     const noteTitleElement = listItem.querySelector('.note-title'); 
-    const noteContentElement = listItem.querySelector('div:not(.note-content)'); 
-    
-    // Create new elements for title and content 
-    const newNoteTitleElement = document.createElement('div'); 
-    newNoteTitleElement.classList.add('note-title'); 
-    newNoteTitleElement.textContent = editedTitle; 
+    const noteContentElement = listItem.querySelector('.note-content'); 
 
-    const newNoteContentElement = document.createElement('div'); 
-    newNoteContentElement.textContent = editedContent; 
-
-    // Replace existing title and content with new elements 
-    if (noteTitleElement) { 
-        noteTitleElement.replaceWith(newNoteTitleElement); 
-    }
-
-    if (noteContentElement) { 
-        noteContentElement.replaceWith(newNoteContentElement); 
-    }
+    const updatedItem = createNoteItem(editedTitle, editedContent); 
+    listItem.replaceWith(updatedItem); 
 
     // Create "Edit" button 
     const editBtn = document.createElement('button'); 
@@ -105,7 +92,6 @@ function saveEditedItem(listItem, editedTitle, editedContent) {
     listItem.querySelector('.save-btn').replaceWith(editBtn); 
     
 }
-
 
 
 // Function to delete a note item 
