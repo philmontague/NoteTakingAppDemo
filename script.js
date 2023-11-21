@@ -43,13 +43,68 @@ function createNoteItem(title, content) {
 }
 
 // Function to edit a note item 
+function editNoteItem(listItem) { 
+    const noteTitleElement = listItem.querySelector('.note-title'); 
+    const noteContentElement = listItem.querySelector('div:not(.note-content)'); 
 
+    const editTitleInput = document.createElement('input'); 
+    editTitleInput.type = 'text'; 
+    editTitleInput.value = noteTitleElement.textContent; 
 
+    const editContentInput = document.createElement('textarea'); 
+    editContentInput.value = noteContentElement.textContent; 
 
+    // Replace existing title and content with input fields 
+    noteTitleElement.replaceWith(editTitleInput); 
+    noteContentElement.replaceWith(editContentInput); 
+
+    // Create a "Save" button 
+    const saveBtn = document.createElement('button'); 
+    saveBtn.textContent = 'Save'; 
+    saveBtn.classList.add('save-btn'); 
+    saveBtn.addEventListener('click', function () { 
+        saveEditedItem(listItem, editTitleInput.value, editContentInput.value); 
+    }); 
+
+    // Replace "Edit" button with "Save" button
+    listItem.querySelector('.edit-btn').replaceWith(saveBtn); 
+}
 
 
 // Function to save edited note item 
+function saveEditedItem(listItem, editedTitle, editedContent) { 
+    const noteTitleElement = listItem.querySelector('.note-title'); 
+    const noteContentElement = listItem.querySelector('div:not(.note-content)'); 
+    
+    // Create new elements for title and content 
+    const newNoteTitleElement = document.createElement('div'); 
+    newNoteTitleElement.classList.add('note-title'); 
+    newNoteTitleElement.textContent = editedTitle; 
 
+    const newNoteContentElement = document.createElement('div'); 
+    newNoteContentElement.textContent = editedContent; 
+
+    // Replace existing title and content with new elements 
+    if (noteTitleElement) { 
+        noteTitleElement.replaceWith(newNoteTitleElement); 
+    }
+
+    if (noteContentElement) { 
+        noteContentElement.replaceWith(newNoteContentElement); 
+    }
+
+    // Create "Edit" button 
+    const editBtn = document.createElement('button'); 
+    editBtn.textContent = 'Edit'; 
+    editBtn.classList.add('edit-btn'); 
+    editBtn.addEventListener('click', function() {
+        editNoteItem(listItem); 
+    }); 
+
+    // Replace "Save" button with "Edit" button 
+    listItem.querySelector('.save-btn').replaceWith(editBtn); 
+    
+}
 
 
 
@@ -73,7 +128,7 @@ addNoteBtn.addEventListener('click', function () {
     const listItem = createNoteItem(noteTitle, noteContent); 
     noteList.appendChild(listItem); 
 
+    // Clear input fields 
     noteTitleInput.value = ''; 
     noteContentInput.value = ''; 
-
 }); 
