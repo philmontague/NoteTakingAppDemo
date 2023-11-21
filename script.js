@@ -48,6 +48,10 @@ function editNoteItem(listItem) {
     const noteTitleElement = listItem.querySelector('.note-title'); 
     const noteContentElement = listItem.querySelector('.note-content'); 
 
+    // editModal 
+    const editModal = document.createElement('div'); 
+    editModal.classList.add('edit-modal'); 
+
     const editTitleInput = document.createElement('input'); 
     editTitleInput.type = 'text'; 
     editTitleInput.value = noteTitleElement.textContent; 
@@ -59,13 +63,17 @@ function editNoteItem(listItem) {
     noteTitleElement.replaceWith(editTitleInput); 
     noteContentElement.replaceWith(editContentInput); 
 
+    editModal.appendChild(editTitleInput); 
+    editModal.appendChild(editContentInput); 
+    listItem.appendChild(editModal); 
+
     // Create a "Save" button 
     const saveBtn = document.createElement('button'); 
     saveBtn.textContent = 'Save'; 
     saveBtn.classList.add('save-btn'); 
     saveBtn.addEventListener('click', function () { 
         saveEditedItem(listItem, editTitleInput.value, editContentInput.value); 
-    }); 
+    });
 
     // Replace "Edit" button with "Save" button
     listItem.querySelector('.edit-btn').replaceWith(saveBtn); 

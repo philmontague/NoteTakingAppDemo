@@ -111,3 +111,7 @@ h1 {
     padding: 5px 2px; 
 }
 
+.edit-modal { 
+    display: flex; 
+    flex-direction: column;
+}
