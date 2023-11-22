@@ -1,7 +1,7 @@
-const noteTitleInput = document.querySelector('#note-title')
-const noteContentInput = document.querySelector('#note-content')
-const addNoteBtn = document.querySelector('#add-note')
-const noteList = document.querySelector('#note-list')
+const noteTitleInput = document.querySelector('#note-title'); 
+const noteContentInput = document.querySelector('#note-content'); 
+const addNoteBtn = document.querySelector('#add-note'); 
+const noteList = document.querySelector('#note-list'); 
 
 
 // Function to create a note item 
@@ -20,7 +20,6 @@ function createNoteItem(title, content) {
     listItem.appendChild(noteTitleElement); 
     listItem.appendChild(noteContentElement); 
 
-
     // Edit button 
     const editBtn = document.createElement('button'); 
     editBtn.textContent = 'Edit'; 
@@ -29,7 +28,6 @@ function createNoteItem(title, content) {
         editNoteItem(listItem); 
     }); 
     listItem.appendChild(editBtn); 
-
 
     // Delete button 
     const deleteBtn = document.createElement('button'); 
@@ -42,6 +40,7 @@ function createNoteItem(title, content) {
 
     return listItem; 
 }
+
 
 // Function to edit a note item 
 function editNoteItem(listItem) { 
@@ -112,7 +111,6 @@ function deleteNoteItem(listItem) {
 addNoteBtn.addEventListener('click', function () { 
     const noteTitle = noteTitleInput.value; 
     const noteContent = noteContentInput.value; 
-
 
     if (noteTitle.trim() === '' || noteContent.trim() === '') { 
         alert('Please enter both a title and content for the note'); 
