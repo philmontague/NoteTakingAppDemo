@@ -4,7 +4,6 @@ const addNoteBtn = document.querySelector('#add-note');
 const noteList = document.querySelector('#note-list'); 
 
 
-// Function to create a note item 
 function createNoteItem(title, content) { 
     const listItem = document.createElement('li'); 
     listItem.classList.add('note'); 
@@ -20,7 +19,6 @@ function createNoteItem(title, content) {
     listItem.appendChild(noteTitleElement); 
     listItem.appendChild(noteContentElement); 
 
-    // Edit button 
     const editBtn = document.createElement('button'); 
     editBtn.textContent = 'Edit'; 
     editBtn.classList.add('edit-btn'); 
@@ -29,7 +27,6 @@ function createNoteItem(title, content) {
     }); 
     listItem.appendChild(editBtn); 
 
-    // Delete button 
     const deleteBtn = document.createElement('button'); 
     deleteBtn.textContent = 'Delete'; 
     deleteBtn.classList.add('delete-btn'); 
@@ -42,12 +39,10 @@ function createNoteItem(title, content) {
 }
 
 
-// Function to edit a note item 
 function editNoteItem(listItem) { 
     const noteTitleElement = listItem.querySelector('.note-title'); 
     const noteContentElement = listItem.querySelector('.note-content'); 
 
-    // editModal 
     const editModal = document.createElement('div'); 
     editModal.classList.add('edit-modal'); 
 
@@ -58,7 +53,6 @@ function editNoteItem(listItem) {
     const editContentInput = document.createElement('textarea'); 
     editContentInput.value = noteContentElement.textContent; 
 
-    // Replace existing title and content with input fields 
     noteTitleElement.replaceWith(editTitleInput); 
     noteContentElement.replaceWith(editContentInput); 
 
@@ -74,12 +68,11 @@ function editNoteItem(listItem) {
         saveEditedItem(listItem, editTitleInput.value, editContentInput.value); 
     });
 
-    // Replace "Edit" button with "Save" button
+
     listItem.querySelector('.edit-btn').replaceWith(saveBtn); 
 }
 
 
-// Function to save edited note item 
 function saveEditedItem(listItem, editedTitle, editedContent) { 
     const noteTitleElement = listItem.querySelector('.note-title'); 
     const noteContentElement = listItem.querySelector('.note-content'); 
@@ -87,7 +80,6 @@ function saveEditedItem(listItem, editedTitle, editedContent) {
     const updatedItem = createNoteItem(editedTitle, editedContent); 
     listItem.replaceWith(updatedItem); 
 
-    // Create "Edit" button 
     const editBtn = document.createElement('button'); 
     editBtn.textContent = 'Edit'; 
     editBtn.classList.add('edit-btn'); 
@@ -95,19 +87,16 @@ function saveEditedItem(listItem, editedTitle, editedContent) {
         editNoteItem(listItem); 
     }); 
 
-    // Replace "Save" button with "Edit" button 
     listItem.querySelector('.save-btn').replaceWith(editBtn); 
     
 }
 
 
-// Function to delete a note item 
 function deleteNoteItem(listItem) { 
     noteList.removeChild(listItem); 
 }
 
 
-// Event Listener 
 addNoteBtn.addEventListener('click', function () { 
     const noteTitle = noteTitleInput.value; 
     const noteContent = noteContentInput.value; 
@@ -120,7 +109,6 @@ addNoteBtn.addEventListener('click', function () {
     const listItem = createNoteItem(noteTitle, noteContent); 
     noteList.appendChild(listItem); 
 
-    // Clear input fields 
     noteTitleInput.value = ''; 
     noteContentInput.value = ''; 
 }); 
