@@ -8,9 +8,107 @@ body {
     margin: 0; 
     padding: 0; 
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh; 
-    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+h1 { 
+    color: #333; 
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#note-title { 
+    width: 100%; 
+    max-width: 500px;
+    padding: 0.5rem; 
+    font-size: 1.2rem;
+    border: none; 
+    border-bottom: 2px solid #6b6b6b;
+    background-color: transparent;
+    color: #333; 
+    margin-bottom: 1rem;
+}
+
+#note-content { 
+    width: 100%; 
+    max-width: 500px;
+    padding: 0.5rem; 
+    font-size: 1rem;
+    border: 2px solid #6b6b6b; 
+    background-color: #fff;
+    color: #333; 
+    resize: vertical; 
+    margin-bottom: 1rem;
+}
+
+#add-note { 
+    padding: 0.5rem 1rem; 
+    font-size: 1rem; 
+    background-color: #333;
+    color: #fff; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+#add-note:hover { 
+    background-color: #6b6b6b;
+}
+
+#note-list { 
+    list-style-type: none;
+    padding: 0; 
+    margin-top: 2rem; 
+    width: 100%; 
+    max-width: 500px;
+}
+
+#note-list li { 
+    background-color: #fff;
+    color: #333; 
+    padding: 1rem; 
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-title, 
+.note-content { 
+    margin-right: 1rem; 
+}
+
+.edit-btn, 
+.delete-btn { 
+    padding: 0.5rem; 
+    font-size: 0.9rem; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn { 
+    background-color: #6b6b6b;
+    color: #fff; 
+}
+
+.edit-btn:hover { 
+    background-color: #333;
+}
+
+.delete-btn { 
+    background-color: #ff4d4d;
+    color: #fff; 
+}
+
+.delete-btn:hover { 
+    background-color: #cc0000;
 }
 
